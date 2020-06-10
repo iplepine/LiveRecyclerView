@@ -54,13 +54,15 @@ class MainViewModel : LiveViewModel() {
         }
 
         items.value?.addAll(itemViewModels)
-        items.value = items.value
         adapter?.notifyDataSetChanged()
     }
 
     fun onDeleteItem(position: Int) {
         items.value?.removeAt(position)
-        items.value = items.value
+    }
+
+    fun updateRandomItem() {
+        items.value?.random()?.onClickUpdate()
     }
 }
 

@@ -24,9 +24,6 @@ public class JavaUnitText {
     @Test
     public void asss() {
         A a = new A();
-        /*HashSet<WeakReference<A>> abc = new HashSet<>();
-
-        abc.add(new WeakReference<>(a));*/
 
         WeakReference weak = new WeakReference(a);
 
@@ -34,10 +31,6 @@ public class JavaUnitText {
         System.out.println(weak.get());
         a = null;
         System.gc();
-
-        /*for (WeakReference<A> b : abc) {
-            System.out.println(b.get());
-        }*/
 
         System.out.println(weak.get());
     }

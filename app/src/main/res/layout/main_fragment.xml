@@ -39,6 +39,15 @@
             app:listData="@{viewModel.items}"></androidx.recyclerview.widget.RecyclerView>
 
         <Button
+            android:id="@+id/updateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.updateRandomItem()}"
+            android:text="랜덤수정"
+            app:layout_constraintRight_toLeftOf="@id/addMoreButton"
+            app:layout_constraintTop_toTopOf="parent"></Button>
+
+        <Button
             android:id="@+id/refreshButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

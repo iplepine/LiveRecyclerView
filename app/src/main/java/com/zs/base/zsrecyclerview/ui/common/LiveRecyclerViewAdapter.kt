@@ -9,34 +9,34 @@ abstract class LiveViewAdapter<VM : LiveItemViewModel, T : LiveViewHolder>(lifec
     RecyclerView.Adapter<T>() {
 
     private val lifecycleOwner = WeakReference(lifecycleOwner)
-    protected val items = ArrayList<VM>()
+    protected var items: List<VM>? = null
 
     fun setData(data: List<VM>) {
-        items.clear()
-        items.addAll(data)
-    }
-
-    fun getItems(): List<VM> {
-        return items
+        items = data
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return getItems().size
+        return items?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: T, position: Int) {
-        val item = getItems()[position]
-        holder.bind(item)
+        val item = items?.get(position)
+        if (item == null) {
+            holder.clear()
+        } else {
+            holder.bind(item)
+        }
+    }
+    
+    override fun onViewAttachedToWindow(holder: T) {
+        super.onViewAttachedToWindow(holder)
+        // 라이프사이클 오우너를 등록해줘야함
+        holder.binding.lifecycleOwner = lifecycleOwner.get()
     }
 
     override fun onViewDetachedFromWindow(holder: T) {
         super.onViewDetachedFromWindow(holder)
-        holder.binding.lifecycleOwner = lifecycleOwner.get()
-    }
-
-    override fun onViewAttachedToWindow(holder: T) {
-        super.onViewAttachedToWindow(holder)
-        // 라이프사이클 오우너를 등록해줘야함
         holder.binding.lifecycleOwner = null
     }
 }

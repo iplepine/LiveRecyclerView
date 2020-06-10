@@ -9,16 +9,28 @@ import java.lang.ref.WeakReference
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
+    var weak : WeakReference<TestClass>? = WeakReference(TestClass())
+
+    var text = "asdfasdf"
+
     @Test
-    fun addition_isCorrect() {
-        var text: TestClass? = TestClass()
-        val weakReference = WeakReference(text)
+    fun aaa() {
+        weakTest()
+        zzz()
+    }
 
-        var weakref1 = weakReference.get()
+    @Test
+    fun weakTest() {
+        var weak2 = weak?.get()
+        weak2 = null
+        //System.gc()
+        text = "zzzzzzzzzzzzzz"
+        println(weak?.get())
+    }
 
-        text = null
-        System.gc()
-        println(weakref1)
+    @Test
+    fun zzz() {
+        println(text)
     }
 
     class TestClass() {

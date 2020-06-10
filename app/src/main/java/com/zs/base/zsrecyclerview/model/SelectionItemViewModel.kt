@@ -23,4 +23,8 @@ class SelectionItemViewModel(val selection: Selection) : LiveItemViewModel() {
         SelectionRepository.updateEvent.value =
             LiveItemViewEvent(LiveItemViewEvent.EventType.DELETE, selection)
     }
+
+    fun onClickUpdate() {
+        selection.title.value = selection.title.value + "11"
+    }
 }
