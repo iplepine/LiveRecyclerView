@@ -54,5 +54,5 @@ Thumbs.db
 #.idea/tasks.xml
 #.idea/datasources.xml
 #.idea/dataSources.ids
-ZumApp/release/output.json
-app/release/output.json
+
+app/maven_account_info
