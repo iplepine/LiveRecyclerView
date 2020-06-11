@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
                 Toast.makeText(context, event.item?.text?.value, Toast.LENGTH_SHORT).show()
             }
             LiveItemViewEvent.EventType.DELETE -> {
-                event?.item?.also { item ->
+                event.item?.also { item ->
                     val position = viewModel.getItemPosition(item)
                     if (position != -1) {
                         viewModel.onDeleteItem(position)
