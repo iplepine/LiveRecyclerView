@@ -1,2 +1,2 @@
-include ':app'
-rootProject.name='zsrecyclerview'
+include ':app', ':example'
+rootProject.name='liverecyclerview'
